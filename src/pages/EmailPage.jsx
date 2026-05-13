@@ -11,11 +11,11 @@ export default function EmailPage() {
   if (processingStatus !== "completed") {
     return (
       <div className="page-transition p-6">
-        <div className="rounded-2xl border border-dashed border-slate-700 p-16 text-center">
-          <div className="w-14 h-14 rounded-full bg-slate-800 flex items-center justify-center mx-auto mb-4">
-            <Mail size={24} className="text-slate-600" />
+        <div className="rounded-2xl border border-dashed border-slate-300 dark:border-slate-700 p-16 text-center">
+          <div className="w-14 h-14 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center mx-auto mb-4">
+            <Mail size={24} className="text-slate-400 dark:text-slate-600" />
           </div>
-          <p className="text-slate-300 font-semibold text-lg">No screening results yet</p>
+          <p className="text-slate-700 dark:text-slate-300 font-semibold text-lg">No screening results yet</p>
           <p className="text-slate-500 text-sm mt-1.5">
             Complete a screening session before sending emails to candidates.
           </p>
@@ -33,8 +33,8 @@ export default function EmailPage() {
   return (
     <div className="page-transition p-6 space-y-5">
       <div>
-        <h2 className="text-lg font-semibold text-slate-100">Email Actions</h2>
-        <p className="text-sm text-slate-400 mt-1">
+        <h2 className="text-lg font-semibold text-slate-900 dark:text-slate-100">Email Actions</h2>
+        <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
           Send automated emails to shortlisted and rejected candidates.
         </p>
       </div>

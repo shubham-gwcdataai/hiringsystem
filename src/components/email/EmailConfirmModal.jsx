@@ -21,7 +21,7 @@ export default function EmailConfirmModal({ isOpen, onClose, onConfirm, count, t
     <>
       <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4" onClick={onClose}>
         <div
-          className={`bg-[#1E293B] border ${borderColor} rounded-2xl p-6 w-full max-w-md shadow-2xl animate-fadeIn`}
+          className={`bg-white dark:bg-[#1E293B] border ${borderColor} rounded-2xl p-6 w-full max-w-md shadow-2xl animate-fadeIn`}
           onClick={(e) => e.stopPropagation()}
           role="dialog"
           aria-modal="true"
@@ -32,29 +32,29 @@ export default function EmailConfirmModal({ isOpen, onClose, onConfirm, count, t
               <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${isSelected ? "bg-green-500/10" : "bg-red-500/10"}`}>
                 <AlertTriangle size={18} className={color} />
               </div>
-              <h3 id="modal-title" className="text-base font-semibold text-slate-100">
+              <h3 id="modal-title" className="text-base font-semibold text-slate-900 dark:text-slate-100">
                 Confirm Bulk Email
               </h3>
             </div>
-            <button onClick={onClose} className="text-slate-500 hover:text-slate-300 transition-colors" aria-label="Close">
+            <button onClick={onClose} className="text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 transition-colors" aria-label="Close">
               <X size={16} />
             </button>
           </div>
 
-          <p className="text-sm text-slate-400 mb-6 leading-relaxed">
+          <p className="text-sm text-slate-500 dark:text-slate-400 mb-6 leading-relaxed">
             You are about to send{" "}
             <span className={`font-semibold ${color}`}>
               {type === "selected" ? "shortlisting" : "rejection"}
             </span>{" "}
             emails to{" "}
-            <span className="font-semibold text-slate-200">{count} candidates</span>.{" "}
+            <span className="font-semibold text-slate-800 dark:text-slate-200">{count} candidates</span>.{" "}
             This action cannot be undone.
           </p>
 
           <div className="flex gap-3">
             <button
               onClick={onClose}
-              className="flex-1 py-2.5 text-sm font-medium text-slate-400 border border-slate-700 rounded-xl hover:border-slate-600 hover:text-slate-200 transition-colors"
+              className="flex-1 py-2.5 text-sm font-medium text-slate-500 border border-slate-300 rounded-xl hover:border-slate-400 hover:text-slate-700 dark:text-slate-400 dark:border-slate-700 dark:hover:border-slate-600 dark:hover:text-slate-200 transition-colors"
             >
               Cancel
             </button>

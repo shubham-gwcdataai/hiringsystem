@@ -36,13 +36,13 @@ export default function Sidebar() {
               `flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-150 group ${
                 isActive
                   ? "bg-indigo-500/10 text-indigo-400 border-l-2 border-indigo-500 pl-[10px]"
-                  : "text-slate-400 hover:text-slate-200 hover:bg-slate-800/60"
+                  : "text-slate-500 hover:text-slate-700 hover:bg-slate-100 dark:text-slate-400 dark:hover:text-slate-200 dark:hover:bg-slate-800/60"
               }`
             }
           >
             {({ isActive }) => (
               <>
-                <Icon size={16} className={isActive ? "text-indigo-400" : "text-slate-500 group-hover:text-slate-300"} />
+                <Icon size={16} className={isActive ? "text-indigo-400" : "text-slate-500 group-hover:text-slate-700 dark:group-hover:text-slate-300"} />
                 <span>{label}</span>
                 {isActive && <ChevronRight size={12} className="ml-auto text-indigo-400/60" />}
               </>
@@ -52,16 +52,16 @@ export default function Sidebar() {
       </nav>
 
       {/* User section */}
-      <div className="border-t border-slate-800 px-4 py-4">
+      <div className="border-t border-slate-200 dark:border-slate-800 px-4 py-4">
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white text-xs font-semibold">
             HR
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-medium text-slate-200 truncate">HR Manager</p>
+            <p className="text-sm font-medium text-slate-700 dark:text-slate-200 truncate">HR Manager</p>
             <p className="text-xs text-slate-500 truncate">hr@company.com</p>
           </div>
-          <button className="text-slate-500 hover:text-slate-300 transition-colors" aria-label="Settings">
+          <button className="text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 transition-colors" aria-label="Settings">
             <Settings size={15} />
           </button>
         </div>

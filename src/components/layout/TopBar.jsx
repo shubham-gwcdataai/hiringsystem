@@ -21,7 +21,7 @@ export default function TopBar() {
       <h1 className="text-base font-semibold text-slate-900 dark:text-slate-100 tracking-tight">{title}</h1>
       <div className="flex items-center gap-3">
         <button
-          className="relative w-8 h-8 rounded-lg flex items-center justify-center text-slate-400 hover:text-slate-200 hover:bg-slate-800 transition-colors"
+          className="relative w-8 h-8 rounded-lg flex items-center justify-center text-slate-400 hover:text-slate-700 hover:bg-slate-100 dark:hover:text-slate-200 dark:hover:bg-slate-800 transition-colors"
           aria-label="Notifications"
         >
           <Bell size={16} />
@@ -31,7 +31,7 @@ export default function TopBar() {
         </button>
         <button
           onClick={toggleTheme}
-          className="w-8 h-8 rounded-lg flex items-center justify-center text-slate-400 hover:text-slate-200 hover:bg-slate-800 transition-colors"
+          className="w-8 h-8 rounded-lg flex items-center justify-center text-slate-400 hover:text-slate-700 hover:bg-slate-100 dark:hover:text-slate-200 dark:hover:bg-slate-800 transition-colors"
           aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
         >
           {isDark ? <Sun size={16} /> : <Moon size={16} />}

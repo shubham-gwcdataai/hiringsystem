@@ -1,10 +1,9 @@
 import React, { useState, useRef } from "react";
-import { X, Tag } from "lucide-react";
+import { X, Plus } from "lucide-react";
 
 export default function SkillsCriteriaInput({ value, onChange }) {
   const [inputVal, setInputVal] = useState("");
   const [tags, setTags] = useState([]);
-  const [mode, setMode] = useState("tags"); // 'tags' | 'text'
   const inputRef = useRef(null);
 
   const addTag = (tag) => {
@@ -23,7 +22,7 @@ export default function SkillsCriteriaInput({ value, onChange }) {
   };
 
   const handleKeyDown = (e) => {
-    if (e.key === "Enter" || e.key === ",") {
+    if (e.key === "Enter") {
       e.preventDefault();
       addTag(inputVal);
     } else if (e.key === "Backspace" && !inputVal && tags.length > 0) {
@@ -31,66 +30,46 @@ export default function SkillsCriteriaInput({ value, onChange }) {
     }
   };
 
-  if (mode === "text") {
-    return (
-      <div>
-        <textarea
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
-          rows={4}
-          placeholder="e.g., 5+ years Python, AWS experience, strong ML background, B.Tech in CS or related field..."
-          className="w-full bg-slate-800/60 border border-slate-700 rounded-xl px-4 py-3 text-sm text-slate-200 placeholder-slate-500 resize-none focus:outline-none focus:border-indigo-500 transition-colors"
-        />
-        <button
-          onClick={() => setMode("tags")}
-          className="mt-2 text-xs text-indigo-400 hover:text-indigo-300 transition-colors"
-        >
-          Switch to tag input
-        </button>
-      </div>
-    );
-  }
-
   return (
-    <div>
-      <div
-        className="min-h-[80px] bg-slate-800/60 border border-slate-700 rounded-xl px-3 py-2.5 flex flex-wrap gap-2 items-start cursor-text focus-within:border-indigo-500 transition-colors"
-        onClick={() => inputRef.current?.focus()}
-      >
-        {tags.map((tag) => (
-          <span
-            key={tag}
-            className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-indigo-500/15 border border-indigo-500/30 rounded-lg text-xs font-medium text-indigo-300"
-          >
-            <Tag size={10} />
-            {tag}
-            <button
-              onClick={(e) => { e.stopPropagation(); removeTag(tag); }}
-              className="text-indigo-400 hover:text-red-400 transition-colors"
-              aria-label={`Remove ${tag}`}
-            >
-              <X size={10} />
-            </button>
-          </span>
-        ))}
+    <div className="space-y-3">
+      <div className="flex items-center gap-2">
         <input
           ref={inputRef}
           value={inputVal}
           onChange={(e) => setInputVal(e.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder={tags.length === 0 ? "Type a skill and press Enter (e.g., Python, AWS, 5+ years ML...)" : "Add more..."}
-          className="flex-1 min-w-[180px] bg-transparent text-sm text-slate-100 placeholder-slate-100 outline-none"
+          placeholder="Add a skill (e.g. Python, AWS, React...)"
+          className="flex-1 h-10 px-4 bg-slate-100 dark:bg-slate-800/60 border border-slate-300 dark:border-slate-700 rounded-lg text-sm text-slate-800 dark:text-slate-200 placeholder-slate-400 outline-none focus:border-indigo-500 transition-colors"
         />
-      </div>
-      <div className="flex items-center justify-between mt-2">
-        <p className="text-xs text-slate-500">Press Enter or comma to add a skill tag</p>
         <button
-          onClick={() => setMode("text")}
-          className="text-xs text-indigo-400 hover:text-indigo-300 transition-colors"
+          onClick={() => addTag(inputVal)}
+          disabled={!inputVal.trim()}
+          className="h-10 px-3 flex items-center gap-1.5 bg-indigo-500 hover:bg-indigo-400 disabled:bg-slate-200 disabled:text-slate-400 dark:disabled:bg-slate-800 disabled:cursor-not-allowed text-white text-sm font-medium rounded-lg transition-colors"
         >
-          Switch to text input
+          <Plus size={15} />
+          Add
         </button>
       </div>
+      {tags.length > 0 && (
+        <div className="flex flex-wrap gap-2">
+          {tags.map((tag) => (
+            <span
+              key={tag}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-indigo-50 dark:bg-indigo-500/10 border border-indigo-200 dark:border-indigo-500/20 rounded-lg text-sm text-indigo-700 dark:text-indigo-300"
+            >
+              {tag}
+              <button
+                onClick={() => removeTag(tag)}
+                className="text-indigo-400 hover:text-red-500 transition-colors"
+                aria-label={`Remove ${tag}`}
+              >
+                <X size={12} />
+              </button>
+            </span>
+          ))}
+        </div>
+      )}
+      <p className="text-xs text-slate-500">Press Enter to add a skill</p>
     </div>
   );
 }

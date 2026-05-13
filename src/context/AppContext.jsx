@@ -5,7 +5,7 @@ const AppContext = createContext(null);
 export function AppProvider({ children }) {
   const [isDark, setIsDark] = useState(() => {
     const stored = localStorage.getItem("hireiq-theme");
-    return stored ? stored === "dark" : true;
+    return stored ? stored === "dark" : false;
   });
   const [processingStatus, setProcessingStatus] = useState("idle"); // idle | processing | completed
   const [stats, setStats] = useState({ total: 0, processing: 0, selected: 0, rejected: 0 });

@@ -8,17 +8,17 @@ export default function ProcessingProgressBar({ processed, total, percentage }) 
   };
 
   return (
-    <div className="rounded-xl p-5 border border-slate-800 bg-navy-900 dark:bg-[#1E293B]">
+    <div className="rounded-xl p-5 border border-slate-200 bg-white dark:border-slate-800 dark:bg-[#1E293B]">
       <div className="flex items-center justify-between mb-3">
-        <span className="text-sm font-medium text-slate-300">
+        <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
           Processing Progress
         </span>
-        <span className="text-sm font-mono text-slate-400">
-          {processed} <span className="text-slate-600">/</span> {total || "—"} resumes
+        <span className="text-sm font-mono text-slate-500 dark:text-slate-400">
+          {processed} <span className="text-slate-400 dark:text-slate-600">/</span> {total || "—"} resumes
         </span>
       </div>
 
-      <div className="relative h-3 bg-slate-800 rounded-full overflow-hidden">
+      <div className="relative h-3 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
         <div
           className={`absolute inset-y-0 left-0 bg-gradient-to-r ${getColor()} rounded-full progress-fill`}
           style={{ width: `${percentage}%` }}

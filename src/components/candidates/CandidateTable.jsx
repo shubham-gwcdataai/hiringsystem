@@ -14,7 +14,7 @@ const ScoreCellRenderer = ({ value }) => {
   const bgColor = value >= 75 ? "bg-green-500" : value >= 50 ? "bg-amber-500" : "bg-red-500";
   return (
     <div className="flex items-center gap-2 h-full">
-      <div className="flex-1 h-1.5 bg-slate-700 rounded-full overflow-hidden">
+      <div className="flex-1 h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
         <div
           className={`h-full ${bgColor} score-fill rounded-full`}
           style={{ width: `${value}%` }}
@@ -66,7 +66,7 @@ export default function CandidateTable() {
       field: "name",
       flex: 1.5,
       minWidth: 150,
-      cellClass: "font-medium text-slate-200 text-sm",
+      cellClass: "font-medium text-slate-800 dark:text-slate-200 text-sm",
     },
     {
       headerName: "Applied Role",
@@ -131,7 +131,7 @@ export default function CandidateTable() {
               setQuickFilter(e.target.value);
               gridRef.current?.api?.setQuickFilter(e.target.value);
             }}
-            className="w-full pl-9 pr-4 py-2 text-sm bg-slate-800/60 border border-slate-700 rounded-xl text-slate-200 placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition-colors"
+            className="w-full pl-9 pr-4 py-2 text-sm bg-slate-100 dark:bg-slate-800/60 border border-slate-300 dark:border-slate-700 rounded-xl text-slate-800 dark:text-slate-200 placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition-colors"
           />
         </div>
 
@@ -143,7 +143,7 @@ export default function CandidateTable() {
               className={`px-3 py-2 text-xs font-semibold rounded-lg border transition-colors ${
                 filter === f
                   ? "bg-indigo-500/15 text-indigo-400 border-indigo-500/30"
-                  : "text-slate-400 border-slate-700 hover:border-slate-600"
+                  : "text-slate-500 border-slate-300 hover:border-slate-400 dark:text-slate-400 dark:border-slate-700 dark:hover:border-slate-600"
               }`}
             >
               {f}
@@ -153,14 +153,14 @@ export default function CandidateTable() {
 
         <button
           onClick={handleExport}
-          className="flex items-center gap-2 px-3 py-2 text-xs font-medium text-slate-400 border border-slate-700 rounded-xl hover:border-slate-600 hover:text-slate-200 transition-colors"
+          className="flex items-center gap-2 px-3 py-2 text-xs font-medium text-slate-500 border border-slate-300 rounded-xl hover:border-slate-400 hover:text-slate-700 dark:text-slate-400 dark:border-slate-700 dark:hover:border-slate-600 dark:hover:text-slate-200 transition-colors"
         >
           <Download size={13} />
           Export CSV
         </button>
       </div>
       <div
-        className={`${isDark ? "ag-theme-alpine-dark" : "ag-theme-alpine"} w-full rounded-xl overflow-hidden border border-slate-800`}
+        className={`${isDark ? "ag-theme-alpine-dark" : "ag-theme-alpine"} w-full rounded-xl overflow-hidden border border-slate-300 dark:border-slate-800`}
         style={{ height: "500px" }}
       >
         <AgGridReact

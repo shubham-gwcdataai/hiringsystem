@@ -11,9 +11,9 @@ function StepLabel({ number, title, icon: Icon }) {
       <div className="w-7 h-7 rounded-lg bg-indigo-500/15 border border-indigo-500/30 flex items-center justify-center">
         <span className="text-xs font-bold font-mono text-indigo-400">{number}</span>
       </div>
-      <div className="flex items-center gap-2">
-        <Icon size={14} className="text-slate-400" />
-        <span className="text-sm font-semibold text-slate-200">{title}</span>
+        <div className="flex items-center gap-2">
+          <Icon size={14} className="text-slate-500 dark:text-slate-400" />
+          <span className="text-sm font-semibold text-slate-700 dark:text-slate-200">{title}</span>
       </div>
     </div>
   );
@@ -59,22 +59,21 @@ export default function UploadPage() {
           <button
             onClick={handleStartScreening}
             disabled={!canStart || isLoading}
-            className={`w-full flex items-center justify-center gap-3 py-4 rounded-2xl text-base font-semibold transition-all duration-200 ${
+            className={`px-8 py-3 rounded-xl text-sm font-semibold transition-all duration-200 mx-auto block ${
               canStart && !isLoading
                 ? "bg-indigo-500 hover:bg-indigo-400 text-white shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40"
-                : "bg-slate-800 text-slate-500 cursor-not-allowed"
+                : "bg-slate-200 text-slate-500 cursor-not-allowed dark:bg-slate-800"
             }`}
             aria-disabled={!canStart || isLoading}
           >
             {isLoading ? (
               <>
-                <Loader2 size={18} className="animate-spin" />
-                Starting Screening...
+                <Loader2 size={16} className="animate-spin" />
+                Starting...
               </>
             ) : (
               <>
-                <Rocket size={18} />
-                Start AI Screening
+                Start Screening
               </>
             )}
           </button>

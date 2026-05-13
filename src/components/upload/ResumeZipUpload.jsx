@@ -73,7 +73,7 @@ export default function ResumeZipUpload({ value, onChange }) {
             <FileArchive size={18} className="text-amber-400" />
           </div>
           <div>
-            <p className="text-sm font-medium text-slate-200">{value.name}</p>
+            <p className="text-sm font-medium text-slate-800 dark:text-slate-200">{value.name}</p>
             <p className="text-xs text-slate-500 font-mono">
               {formatSize(value.size)} · {resumeCount > 0 ? `${resumeCount} resumes detected` : "Counting..."}
             </p>
@@ -99,16 +99,16 @@ export default function ResumeZipUpload({ value, onChange }) {
       className={`border-2 border-dashed rounded-xl p-8 text-center cursor-pointer transition-all duration-200 ${
         isDragActive
           ? "border-amber-500 bg-amber-500/5"
-          : "border-slate-700 hover:border-slate-600 hover:bg-slate-800/40"
+          : "border-slate-300 hover:border-slate-400 hover:bg-slate-50 dark:border-slate-700 dark:hover:border-slate-600 dark:hover:bg-slate-800/40"
       }`}
     >
       <input {...getInputProps()} />
       <div className="flex flex-col items-center gap-3">
-        <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${isDragActive ? "bg-amber-500/20" : "bg-slate-800"}`}>
+        <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${isDragActive ? "bg-amber-500/20" : "bg-slate-100 dark:bg-slate-800"}`}>
           <Archive size={22} className={isDragActive ? "text-amber-400" : "text-slate-500"} />
         </div>
         <div>
-          <p className="text-sm font-medium text-slate-300">
+          <p className="text-sm font-medium text-slate-700 dark:text-slate-300">
             {isDragActive ? "Drop ZIP file here" : "Drag & Drop or Click to Upload"}
           </p>
           <p className="text-xs text-slate-500 mt-1">Accepts .zip files only</p>

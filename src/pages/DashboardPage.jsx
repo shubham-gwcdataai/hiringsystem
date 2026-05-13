@@ -59,22 +59,22 @@ export default function DashboardPage() {
           ? "bg-green-500/5 border-green-500/20"
           : isProcessing
           ? "bg-indigo-500/5 border-indigo-500/20"
-          : "bg-slate-800/50 border-slate-700"
+          : "bg-slate-100 border-slate-200 dark:bg-slate-800/50 dark:border-slate-700"
       }`}>
         {isComplete ? (
           <SuccessAnimation />
         ) : isProcessing ? (
           <WaveformAnimation />
         ) : (
-          <div className="w-10 h-10 rounded-xl bg-slate-700 flex items-center justify-center">
-            <FileText size={18} className="text-slate-400" />
+          <div className="w-10 h-10 rounded-xl bg-slate-200 dark:bg-slate-700 flex items-center justify-center">
+            <FileText size={18} className="text-slate-500 dark:text-slate-400" />
           </div>
         )}
         <div>
-          <h3 className={`font-semibold text-base ${isComplete ? "text-green-300" : isProcessing ? "text-indigo-300" : "text-slate-100"}`}>
+          <h3 className={`font-semibold text-base ${isComplete ? "text-green-600 dark:text-green-300" : isProcessing ? "text-indigo-600 dark:text-indigo-300" : "text-slate-700 dark:text-slate-100"}`}>
             {isComplete ? "Screening Complete!" : isProcessing ? "AI Screening in Progress..." : "No Active Screening"}
           </h3>
-          <p className="text-sm text-slate-100 mt-0.5">
+          <p className="text-sm text-slate-600 dark:text-slate-100 mt-0.5">
             {isComplete
               ? `${total} resumes processed — ${stats.selected} selected, ${stats.rejected} rejected.`
               : isProcessing
@@ -148,20 +148,20 @@ export default function DashboardPage() {
               { name: "Sneha Iyer", score: 88, status: "Selected", time: "6s ago" },
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-3">
-                <div className="w-7 h-7 rounded-full bg-slate-700 flex items-center justify-center text-xs font-semibold text-slate-400">
+                <div className="w-7 h-7 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-xs font-semibold text-slate-500 dark:text-slate-400">
                   {item.name.charAt(0)}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <span className="text-sm text-slate-300">{item.name}</span>
+                  <span className="text-sm text-slate-700 dark:text-slate-300">{item.name}</span>
                   <span
                     className={`ml-2 text-xs font-semibold px-1.5 py-0.5 rounded font-mono ${
-                      item.status === "Selected" ? "bg-green-500/10 text-green-400" : "bg-red-500/10 text-red-400"
+                      item.status === "Selected" ? "bg-green-500/10 text-green-600 dark:text-green-400" : "bg-red-500/10 text-red-600 dark:text-red-400"
                     }`}
                   >
                     {item.score}/100
                   </span>
                 </div>
-                <span className="text-xs text-slate-600 font-mono flex-shrink-0">{item.time}</span>
+                <span className="text-xs text-slate-500 dark:text-slate-600 font-mono flex-shrink-0">{item.time}</span>
               </div>
             ))}
           </div>

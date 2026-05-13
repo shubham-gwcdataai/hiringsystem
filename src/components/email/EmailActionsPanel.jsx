@@ -57,27 +57,27 @@ function EmailCard({ type, count, isSent, onSend, sentAt }) {
 
   return (
     <>
-      <div className={`rounded-2xl border border-slate-800 bg-[#1E293B] p-6 flex flex-col gap-5`}>
+      <div className={`rounded-2xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-[#1E293B] p-6 flex flex-col gap-5`}>
         <div className="flex items-start gap-4">
           <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${config.iconBg} flex-shrink-0`}>
             <Icon size={22} className={config.iconColor} />
           </div>
           <div>
-            <h3 className="font-semibold text-slate-100 text-base">{config.title}</h3>
-            <p className="text-sm text-slate-400 mt-1">{config.subtitle}</p>
+            <h3 className="font-semibold text-slate-900 dark:text-slate-100 text-base">{config.title}</h3>
+            <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">{config.subtitle}</p>
           </div>
         </div>
 
-        <div className={`flex items-center gap-2 px-4 py-3 rounded-xl bg-slate-800/60`}>
+        <div className={`flex items-center gap-2 px-4 py-3 rounded-xl bg-slate-100 dark:bg-slate-800/60`}>
           <span className={`text-2xl font-bold font-mono ${config.accentClass}`}>{count}</span>
-          <span className="text-sm text-slate-400">{config.countLabel}</span>
+          <span className="text-sm text-slate-500 dark:text-slate-400">{config.countLabel}</span>
         </div>
 
         {isSent ? (
           <div className={`flex items-center gap-3 p-4 rounded-xl border ${config.successBg}`}>
             <CheckCircle size={18} className="text-green-400 flex-shrink-0" />
             <div>
-              <p className="text-sm font-semibold text-slate-200">Emails sent successfully</p>
+              <p className="text-sm font-semibold text-slate-800 dark:text-slate-200">Emails sent successfully</p>
               <p className="text-xs text-slate-500 flex items-center gap-1 mt-0.5">
                 <Clock size={10} />
                 {sentAt}
@@ -90,7 +90,7 @@ function EmailCard({ type, count, isSent, onSend, sentAt }) {
             disabled={count === 0 || isLoading}
             className={`flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold transition-all ${
               count === 0 || isLoading
-                ? "bg-slate-700 text-slate-500 cursor-not-allowed"
+                ? "bg-slate-200 text-slate-500 cursor-not-allowed dark:bg-slate-700 dark:text-slate-500"
                 : config.btnClass
             }`}
           >
@@ -157,17 +157,17 @@ export default function EmailActionsPanel() {
 
       {/* Log */}
       {(emailSentSelected || emailSentRejected) && (
-        <div className="mt-6 p-4 rounded-xl bg-slate-800/50 border border-slate-700">
-          <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Email Log</p>
+        <div className="mt-6 p-4 rounded-xl bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
+          <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Email Log</p>
           <div className="space-y-1.5">
             {emailSentSelected && (
-              <div className="flex items-center gap-2 text-xs text-slate-400 font-mono">
+              <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 font-mono">
                 <CheckCircle size={12} className="text-green-400" />
                 <span>{sentSelectedAt} — Shortlisting emails sent to {selected.length} candidates</span>
               </div>
             )}
             {emailSentRejected && (
-              <div className="flex items-center gap-2 text-xs text-slate-400 font-mono">
+              <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 font-mono">
                 <CheckCircle size={12} className="text-green-400" />
                 <span>{sentRejectedAt} — Rejection emails sent to {rejected.length} candidates</span>
               </div>

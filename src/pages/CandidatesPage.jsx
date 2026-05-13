@@ -11,11 +11,11 @@ export default function CandidatesPage() {
   if (processingStatus === "idle" || candidates.length === 0) {
     return (
       <div className="page-transition p-6">
-        <div className="rounded-2xl border border-dashed border-slate-700 p-16 text-center">
-          <div className="w-14 h-14 rounded-full bg-slate-800 flex items-center justify-center mx-auto mb-4">
-            <Users size={24} className="text-slate-600" />
+        <div className="rounded-2xl border border-dashed border-slate-300 dark:border-slate-700 p-16 text-center">
+          <div className="w-14 h-14 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center mx-auto mb-4">
+            <Users size={24} className="text-slate-400 dark:text-slate-600" />
           </div>
-          <p className="text-slate-300 font-semibold text-lg">No candidates yet</p>
+          <p className="text-slate-700 dark:text-slate-300 font-semibold text-lg">No candidates yet</p>
           <p className="text-slate-500 text-sm mt-1.5">
             {processingStatus === "processing"
               ? "Screening in progress — check back soon."
@@ -38,9 +38,9 @@ export default function CandidatesPage() {
     <div className="page-transition p-6 space-y-5">
       {/* Summary strip */}
       <div className="flex flex-wrap gap-3">
-        <div className="flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-800 border border-slate-700">
+        <div className="flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700">
           <Users size={14} className="text-slate-500" />
-          <span className="text-sm font-mono text-slate-300">{candidates.length}</span>
+          <span className="text-sm font-mono text-slate-700 dark:text-slate-300">{candidates.length}</span>
           <span className="text-xs text-slate-500">total</span>
         </div>
         <div className="flex items-center gap-2 px-3 py-2 rounded-xl bg-green-500/5 border border-green-500/20">

@@ -28,7 +28,7 @@ export default function StatCard({ icon: Icon, label, value, accentClass, bgClas
   const displayValue = useCountUp(value);
 
   return (
-    <div className={`relative rounded-xl p-5 border border-slate-800 bg-navy-900 dark:bg-[#1E293B] overflow-hidden group hover:border-slate-700 transition-colors`}>
+    <div className={`relative rounded-xl p-5 border border-slate-200 bg-white dark:border-slate-800 dark:bg-[#1E293B] overflow-hidden group hover:border-slate-300 dark:hover:border-slate-700 transition-colors`}>
       {/* Background accent */}
       <div className={`absolute top-0 right-0 w-24 h-24 rounded-full -translate-y-8 translate-x-8 opacity-10 ${bgClass}`} />
 
@@ -46,7 +46,7 @@ export default function StatCard({ icon: Icon, label, value, accentClass, bgClas
         >
           {displayValue}
         </p>
-        <p className="text-sm text-slate-400 mt-1 font-sans">{label}</p>
+        <p className="text-sm text-slate-500 dark:text-slate-400 mt-1 font-sans">{label}</p>
       </div>
     </div>
   );
