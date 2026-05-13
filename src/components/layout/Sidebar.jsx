@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import {
   Upload, LayoutDashboard, Users, Mail,
-  Sparkles, Settings, ChevronRight
+  Sparkles, LogOut, ChevronRight
 } from "lucide-react";
 import { useApp } from "../../context/AppContext";
 
@@ -14,15 +14,12 @@ const navItems = [
 ];
 
 export default function Sidebar() {
-  const { isDark } = useApp();
+  const { user, logout } = useApp();
   const location = useLocation();
 
   return (
     <aside className="hidden lg:flex flex-col w-60 h-screen fixed left-0 top-0 z-30 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0F172A]">
       <div className="flex items-center gap-3 px-5 py-5 border-b border-slate-200 dark:border-slate-800">
-        <div className="w-8 h-8 rounded-lg bg-indigo-500 flex items-center justify-center shadow-lg shadow-indigo-500/30">
-          <Sparkles size={16} className="text-white" />
-        </div>
         <span className="font-sans font-700 text-lg text-slate-900 dark:text-white tracking-tight">
           Hire<span className="text-indigo-400">IQ</span>
         </span>
@@ -55,14 +52,18 @@ export default function Sidebar() {
       <div className="border-t border-slate-200 dark:border-slate-800 px-4 py-4">
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white text-xs font-semibold">
-            HR
+            {user?.initials || "HR"}
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-medium text-slate-700 dark:text-slate-200 truncate">HR Manager</p>
-            <p className="text-xs text-slate-500 truncate">hr@company.com</p>
+            <p className="text-sm font-medium text-slate-700 dark:text-slate-200 truncate">{user?.name || "HR Manager"}</p>
+            <p className="text-xs text-slate-500 truncate">{user?.email || "hr@company.com"}</p>
           </div>
-          <button className="text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 transition-colors" aria-label="Settings">
-            <Settings size={15} />
+          <button
+            onClick={logout}
+            className="text-slate-400 hover:text-red-500 transition-colors"
+            aria-label="Sign out"
+          >
+            <LogOut size={15} />
           </button>
         </div>
       </div>
