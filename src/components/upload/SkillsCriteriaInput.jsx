@@ -3,22 +3,19 @@ import { X, Plus } from "lucide-react";
 
 export default function SkillsCriteriaInput({ value, onChange }) {
   const [inputVal, setInputVal] = useState("");
-  const [tags, setTags] = useState([]);
   const inputRef = useRef(null);
+
+  const tags = value ? value.split(", ").filter(Boolean) : [];
 
   const addTag = (tag) => {
     const trimmed = tag.trim();
     if (!trimmed || tags.includes(trimmed)) return;
-    const newTags = [...tags, trimmed];
-    setTags(newTags);
-    onChange(newTags.join(", "));
+    onChange([...tags, trimmed].join(", "));
     setInputVal("");
   };
 
   const removeTag = (tag) => {
-    const newTags = tags.filter((t) => t !== tag);
-    setTags(newTags);
-    onChange(newTags.join(", "));
+    onChange(tags.filter((t) => t !== tag).join(", "));
   };
 
   const handleKeyDown = (e) => {
